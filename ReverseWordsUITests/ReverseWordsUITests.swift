@@ -9,7 +9,7 @@ import XCTest
 
 final class ReverseWordsUITests: XCTestCase {
 
-    func testReverseWordsTextInputSuccessfuly() throws {
+    func testReverseWordsTextInputSuccessfuly() {
  
         let app = XCUIApplication()
         app.launch()
@@ -25,7 +25,7 @@ final class ReverseWordsUITests: XCTestCase {
             "epyT emos txet")
     }
     
-    func testReverseWordsLongTextScrollingSuccessfuly() throws {
+    func testReverseWordsLongTextScrollingSuccessfuly() {
         let app = XCUIApplication()
         app.launch()
                 
@@ -39,7 +39,7 @@ final class ReverseWordsUITests: XCTestCase {
         XCTAssertTrue(app.scrollViews.containing(.staticText, identifier:"outputLabel").element.exists)
     }
     
-    func testReverseWordsChangeButtonTitleSuccessfuly() throws {
+    func testReverseWordsChangeButtonTitleSuccessfuly() {
         let app = XCUIApplication()
         app.launch()
                 

@@ -13,26 +13,26 @@ final class ReverseWordsTests: XCTestCase {
     var reverseManagerTesting: ReverseManager!
     
     override func setUp() {
+        super.setUp()
         reverseManagerTesting = ReverseManager()
     }
 
     override func tearDown() {
         reverseManagerTesting = nil
+        super.tearDown()
     }
 
-    func testReverseWordsOneWordReversedSuccessfuly() throws {
-        super.setUp()
+    func testReverseWordsOneWordReversedSuccessfuly() {
         
         let testString = "Test"
         
         let reverseWords = reverseManagerTesting.reverseWords(of: testString)
 
         XCTAssertEqual(reverseWords, "tseT")
-        
-        super.tearDown()
-    }
+        }
     
-    func testReverseWordsFewWordsReversedSuccessfuly() throws {
+    func testReverseWordsFewWordsReversedSuccessfuly() {
+        
         let testString = "I love programming."
         
         let reverseWords = reverseManagerTesting.reverseWords(of: testString)
