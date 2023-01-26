@@ -51,6 +51,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch"/>
                                 <connections>
+                                    <action selector="textFieldForReversingAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="sK6-zq-z3H"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="vEK-kd-Pl3"/>
                                 </connections>
                             </textField>
@@ -85,6 +86,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldForCustomModeAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="60N-WO-IrU"/>
+                                </connections>
                             </textField>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVX-3P-00g">
                                 <rect key="frame" x="16" y="381" width="361" height="40"/>
@@ -111,20 +115,15 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="iHI-EZ-p7Y"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="CMH-D9-g6T"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKP-ES-SbS">
-                                <rect key="frame" x="160.66666666666666" y="321" width="71.666666666666657" height="40"/>
-                                <accessibility key="accessibilityConfiguration" identifier="showResultButton"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi8-HM-UJk">
+                                <rect key="frame" x="170.66666666666666" y="326" width="52" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="cu8-zv-HWb"/>
+                                    <constraint firstAttribute="height" constant="40" id="gJE-U1-Vad"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Result">
-                                    <color key="baseForegroundColor" red="0.1886771619" green="0.45253068210000003" blue="0.86449313159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="showResultButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TiR-4b-I3z"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,15 +139,14 @@
                             <constraint firstItem="LJ1-gP-JLD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Fa7-CK-tkW"/>
                             <constraint firstItem="mVX-3P-00g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="FjL-u7-9Gi"/>
                             <constraint firstItem="TJj-bI-5lu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HLR-Ai-ZTk"/>
-                            <constraint firstItem="hKP-ES-SbS" firstAttribute="top" secondItem="LJ1-gP-JLD" secondAttribute="bottom" constant="15" id="IcM-GE-Cr1"/>
-                            <constraint firstItem="hKP-ES-SbS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Kea-5x-5Ax"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mVX-3P-00g" secondAttribute="trailing" constant="16" id="L6d-bM-BPh"/>
-                            <constraint firstItem="mVX-3P-00g" firstAttribute="top" secondItem="hKP-ES-SbS" secondAttribute="bottom" constant="20" id="OTz-rh-di9"/>
                             <constraint firstItem="qy8-Wt-3DB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="OdV-Uk-Tiz"/>
                             <constraint firstItem="4P6-AF-o7Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="TVL-nA-sPh"/>
+                            <constraint firstItem="Vi8-HM-UJk" firstAttribute="top" secondItem="qy8-Wt-3DB" secondAttribute="bottom" constant="20" id="VWe-Rc-dyX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4P6-AF-o7Q" secondAttribute="trailing" constant="16" id="grH-EK-jdh"/>
+                            <constraint firstItem="mVX-3P-00g" firstAttribute="top" secondItem="Vi8-HM-UJk" secondAttribute="bottom" constant="15" id="hLj-hd-AXp"/>
                             <constraint firstItem="LJ1-gP-JLD" firstAttribute="top" secondItem="ABV-Z4-X2h" secondAttribute="bottom" constant="30" id="hcZ-1k-S04"/>
-                            <constraint firstItem="hKP-ES-SbS" firstAttribute="top" secondItem="qy8-Wt-3DB" secondAttribute="bottom" constant="15" id="i4c-pD-mMv"/>
+                            <constraint firstItem="Vi8-HM-UJk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="j1R-CN-bfR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ABV-Z4-X2h" secondAttribute="trailing" constant="16" id="nUV-2M-zwE"/>
                             <constraint firstItem="zQL-To-vwQ" firstAttribute="top" secondItem="TJj-bI-5lu" secondAttribute="bottom" id="om2-jS-eus"/>
                             <constraint firstItem="4P6-AF-o7Q" firstAttribute="top" secondItem="zQL-To-vwQ" secondAttribute="bottom" constant="30" id="qoy-kW-H1u"/>
@@ -159,10 +157,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="labelForDefaultMode" destination="qy8-Wt-3DB" id="4A9-xb-lt3"/>
                         <outlet property="modeSegmentedControl" destination="ABV-Z4-X2h" id="52E-I7-cxv"/>
                         <outlet property="outputLabel" destination="W8d-P3-lio" id="dzR-5Z-Nfc"/>
-                        <outlet property="showResultButton" destination="hKP-ES-SbS" id="e6z-Is-Exd"/>
                         <outlet property="textFieldForCustomMode" destination="LJ1-gP-JLD" id="rRv-lU-xUS"/>
                         <outlet property="textFieldForReversing" destination="4P6-AF-o7Q" id="ih8-x0-L1r"/>
                     </connections>

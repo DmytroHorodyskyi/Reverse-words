@@ -17,9 +17,6 @@ final class ReverseWordsUITests: XCTestCase {
         app.textFields["textFieldForReversing"].tap()
         app.textFields["textFieldForReversing"].typeText("Foxminded cool 24/7")
         
-        app.buttons["Go"].tap()
-        app.buttons["showResultButton"].tap()
-        
         XCTAssertEqual(
             app.staticTexts.element(matching: .any, identifier: "outputLabel").label,
             "dednimxoF looc 24/7")
@@ -36,9 +33,6 @@ final class ReverseWordsUITests: XCTestCase {
         
         app.textFields["Text to ignore"].tap()
         app.textFields["Text to ignore"].typeText("xl")
-                
-        app.scrollViews.containing(.staticText, identifier:"outputLabel").element.tap()
-        app.buttons["showResultButton"].tap()
         
         XCTAssertEqual(
             app.staticTexts.element(matching: .any, identifier: "outputLabel").label,

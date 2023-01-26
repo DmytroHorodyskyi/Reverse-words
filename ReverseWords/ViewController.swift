@@ -14,15 +14,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBOutlet weak var textFieldForReversing: UITextField!
-    
-    @IBOutlet weak var labelForDefaultMode: UILabel!
-    
+        
     @IBOutlet weak var textFieldForCustomMode: UITextField!
     
     @IBOutlet weak var modeSegmentedControl: UISegmentedControl!
-    
-    @IBOutlet weak var showResultButton: UIButton!
-    
+        
     @IBOutlet weak var outputLabel: UILabel!
     
     private var reverseMode: ReverseMode = .defaultMode
@@ -44,26 +40,29 @@ class ViewController: UIViewController, UITextFieldDelegate{
         textFieldForCustomMode.alpha = alpha
     }
     
-    @IBAction func switchModeSegmentedControl(_ sender: UISegmentedControl) {
-        
-        if modeSegmentedControl.selectedSegmentIndex == 0 {
-            setTextFieldForCustomMode(isEnabled: false, alpha: 0)
-            reverseMode = .defaultMode
-            outputLabel.text = " "
-        } else {
-            setTextFieldForCustomMode(isEnabled: true, alpha: 1)
-            reverseMode = .customMode
-            outputLabel.text = " "
-        }
-    }
-    
-    @IBAction func showResultButtonAction(_ sender: UIButton) {
+    @IBAction func textFieldForReversingAction(_ sender: UITextField) {
         
         if reverseMode == .defaultMode {
             outputLabel.text = ReverseManager().reverseWordsExceptAlphabeticSymbols(of: textFieldForReversing.text ?? "")
         } else {
             outputLabel.text = ReverseManager().reverseWords(of: textFieldForReversing.text ?? "", ignore: textFieldForCustomMode.text ?? "")
         }
+    }
+    
+    @IBAction func switchModeSegmentedControl(_ sender: UISegmentedControl) {
+        
+        if modeSegmentedControl.selectedSegmentIndex == 0 {
+            setTextFieldForCustomMode(isEnabled: false, alpha: 0)
+            reverseMode = .defaultMode
+        } else {
+            setTextFieldForCustomMode(isEnabled: true, alpha: 1)
+            reverseMode = .customMode
+        }
+        textFieldForReversingAction(textFieldForReversing)
+    }
+    
+    @IBAction func textFieldForCustomModeAction(_ sender: UITextField) {
+        textFieldForReversingAction(textFieldForReversing)
     }
 }
 
