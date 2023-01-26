@@ -22,21 +22,29 @@ final class ReverseWordsTests: XCTestCase {
         super.tearDown()
     }
 
-    func testReverseWordsOneWordReversedSuccessfuly() {
+    func testReverseWordsExceptAlphabeticSymbolsReversedSuccessfuly() {
         
-        let testString = "Test"
-        
-        let reverseWords = reverseManagerTesting.reverseWords(of: testString)
+        let testStrings = ["Foxminded cool 24/7" : "dednimxoF looc 24/7",
+                          "abcd efgh" : "dcba hgfe",
+                          "a1bcd efg!h" : "d1cba hgf!e"]
 
-        XCTAssertEqual(reverseWords, "tseT")
+        for string in testStrings {
+            
+            let reverseWords = reverseManagerTesting.reverseWordsExceptAlphabeticSymbols(of: string.key)
+            XCTAssertEqual(reverseWords, string.value)
+            }
         }
     
-    func testReverseWordsFewWordsReversedSuccessfuly() {
+    func testReverseWordsWithIgnoreSomeCharactersReversedSuccessfuly() {
         
-        let testString = "I love programming."
+        let testStrings = ["Foxminded cool 24/7" : "dexdnimoF oocl 7/42",
+                          "abcd efgh" : "dcba hgfe",
+                          "a1bcd efglh" : "dcb1a hgfle"]
         
-        let reverseWords = reverseManagerTesting.reverseWords(of: testString)
-
-        XCTAssertEqual(reverseWords, "I evol .gnimmargorp")
+        for string in testStrings {
+            
+            let reverseWords = reverseManagerTesting.reverseWords(of: string.key, ignore: "xl")
+            XCTAssertEqual(reverseWords, string.value)
+        }
     }
 }

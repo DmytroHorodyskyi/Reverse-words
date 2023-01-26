@@ -9,93 +9,65 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate{
     
-    private enum ButtonState {
-        case readyToReverse, readyToClear
+    private enum ReverseMode {
+        case defaultMode, customMode
     }
     
     @IBOutlet weak var textFieldForReversing: UITextField!
+    
+    @IBOutlet weak var labelForDefaultMode: UILabel!
+    
+    @IBOutlet weak var textFieldForCustomMode: UITextField!
+    
+    @IBOutlet weak var modeSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var showResultButton: UIButton!
     
     @IBOutlet weak var outputLabel: UILabel!
     
-    @IBOutlet weak var underline: UIView!
-    
-    private var buttonState:ButtonState = .readyToReverse
+    private var reverseMode: ReverseMode = .defaultMode
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cleanFields()
-        setShowResultButton(isEnabled: false)
+        setTextFieldForCustomMode(isEnabled: false, alpha: 0)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(disableTextFieldForReversing))
         view.addGestureRecognizer(tap)
     }
     
     @objc func disableTextFieldForReversing() {
         self.view.endEditing(true)
-        underline.backgroundColor = UIColor.systemGray3
     }
     
-    
-    func setShowResultButton(isEnabled: Bool? = nil, title: String? = nil, alpha: CGFloat? = nil) {
+    func setTextFieldForCustomMode(isEnabled: Bool, alpha: CGFloat) {
         
-        
-        if let isEnabled = isEnabled {
-            showResultButton.isEnabled = isEnabled
-        }
-        if let title = title {
-            showResultButton.setTitle(title, for: .normal)
-        }
-        if let alpha = alpha {
-            showResultButton.alpha = alpha
-        }
-        showResultButton.backgroundColor = UIColor.systemBlue
-        showResultButton.layer.cornerRadius = 10
-        showResultButton.setTitleColor(UIColor.white, for: .disabled)
+        textFieldForCustomMode.isEnabled = isEnabled
+        textFieldForCustomMode.alpha = alpha
     }
     
-    func cleanFields() {
-        outputLabel.text = ""
-        textFieldForReversing.text = ""
-    }
-    
-    
-    @IBAction func buttonAction(_ sender: UIButton) {
+    @IBAction func switchModeSegmentedControl(_ sender: UISegmentedControl) {
         
-        if (textFieldForReversing.text != "") && buttonState == .readyToReverse {
-            outputLabel.text = ReverseManager().reverseWords(of: textFieldForReversing.text ?? "")
-            setShowResultButton(isEnabled: true, title: "Clear")
-            buttonState = .readyToClear
-            
+        if modeSegmentedControl.selectedSegmentIndex == 0 {
+            setTextFieldForCustomMode(isEnabled: false, alpha: 0)
+            reverseMode = .defaultMode
+            outputLabel.text = " "
         } else {
-            cleanFields()
-            setShowResultButton(isEnabled: false, title: "Reverse", alpha: 0.5)
-            buttonState = .readyToReverse
+            setTextFieldForCustomMode(isEnabled: true, alpha: 1)
+            reverseMode = .customMode
+            outputLabel.text = " "
+        }
+    }
+    
+    @IBAction func showResultButtonAction(_ sender: UIButton) {
+        
+        if reverseMode == .defaultMode {
+            outputLabel.text = ReverseManager().reverseWordsExceptAlphabeticSymbols(of: textFieldForReversing.text ?? "")
+        } else {
+            outputLabel.text = ReverseManager().reverseWords(of: textFieldForReversing.text ?? "", ignore: textFieldForCustomMode.text ?? "")
         }
     }
 }
 
 extension ViewController {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = (textField.text as? NSString)?.replacingCharacters(in: range, with: string) {
-            
-            if text.isEmpty {
-                setShowResultButton(isEnabled: false, alpha: 0.5)
-                
-            } else {
-                setShowResultButton(isEnabled: true, title: "Reverse", alpha: 1.0)
-                buttonState = .readyToReverse
-            }
-        }
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == textFieldForReversing {
-            underline.backgroundColor = UIColor.systemBlue
-        }
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
