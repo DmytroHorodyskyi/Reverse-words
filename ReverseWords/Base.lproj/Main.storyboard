@@ -49,7 +49,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="textFieldForReversingAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="sK6-zq-z3H"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="vEK-kd-Pl3"/>
@@ -84,10 +84,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Yng-v5-OUN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <action selector="textFieldForCustomModeAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="60N-WO-IrU"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vky-D6-aL6"/>
                                 </connections>
                             </textField>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVX-3P-00g">
