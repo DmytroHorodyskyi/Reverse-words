@@ -16,27 +16,27 @@ final class ReverseWordsTests: XCTestCase {
         super.setUp()
         reverseManagerTesting = ReverseManager()
     }
-
+    
     override func tearDown() {
         reverseManagerTesting = nil
         super.tearDown()
     }
-
-    func testReverseWordsOneWordReversedSuccessfuly() {
-        
-        let testString = "Test"
-        
-        let reverseWords = reverseManagerTesting.reverseWords(of: testString)
-
-        XCTAssertEqual(reverseWords, "tseT")
-        }
     
-    func testReverseWordsFewWordsReversedSuccessfuly() {
+    func testReverseWordsExceptAlphabeticSymbolsReversedSuccessfuly() {
         
-        let testString = "I love programming."
+        let reverseWords = reverseManagerTesting.reverseWordsExceptAlphabeticSymbols(of: "Foxminded cool 24/7")
+        XCTAssertEqual(reverseWords, "dednimxoF looc 24/7")
+    }
+    
+    func testReverseWordsWithoutIgnoreCharactersReversedSuccessfuly() {
         
-        let reverseWords = reverseManagerTesting.reverseWords(of: testString)
-
-        XCTAssertEqual(reverseWords, "I evol .gnimmargorp")
+        let reverseWords = reverseManagerTesting.reverseWords(of: "Foxminded cool 24/7", ignore: "")
+        XCTAssertEqual(reverseWords, "dednimxoF looc 7/42")
+    }
+    
+    func testReverseWordsWithIgnoreSomeCharactersReversedSuccessfuly() {
+                
+            let reverseWords = reverseManagerTesting.reverseWords(of: "Foxminded cool 24/7", ignore: "Foxminded")
+            XCTAssertEqual(reverseWords, "Foxminded looc 7/42")
     }
 }

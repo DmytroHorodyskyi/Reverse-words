@@ -9,48 +9,33 @@ import XCTest
 
 final class ReverseWordsUITests: XCTestCase {
 
-    func testReverseWordsTextInputSuccessfuly() {
+    func testReverseWordsDefaultModeTextInputSuccessfuly() {
  
         let app = XCUIApplication()
         app.launch()
                 
         app.textFields["textFieldForReversing"].tap()
-        app.textFields["textFieldForReversing"].typeText("Type some text")
-        
-        app.buttons["Go"].tap()
-        app.buttons["showResultButton"].tap()
+        app.textFields["textFieldForReversing"].typeText("Foxminded cool 24/7")
         
         XCTAssertEqual(
             app.staticTexts.element(matching: .any, identifier: "outputLabel").label,
-            "epyT emos txet")
+            "dednimxoF looc 24/7")
     }
     
-    func testReverseWordsLongTextScrollingSuccessfuly() {
+    func testReverseWordsCustomModeTextInputSuccessfuly() {
+ 
         let app = XCUIApplication()
         app.launch()
-                
+        
+        app.buttons["Custom"].tap()
         app.textFields["textFieldForReversing"].tap()
-        app.textFields["textFieldForReversing"].typeText("Type some long text that won't fit on one screen")
-            
-        app.buttons["Go"].tap()
-        app.buttons["showResultButton"].tap()
+        app.textFields["textFieldForReversing"].typeText("Foxminded cool 24/7")
         
-        app.scrollViews.containing(.staticText, identifier:"outputLabel").element.swipeLeft()
-        XCTAssertTrue(app.scrollViews.containing(.staticText, identifier:"outputLabel").element.exists)
-    }
-    
-    func testReverseWordsChangeButtonTitleSuccessfuly() {
-        let app = XCUIApplication()
-        app.launch()
-                
-        app.textFields["textFieldForReversing"].tap()
-        app.textFields["textFieldForReversing"].typeText("Type some text")
+        app.textFields["Text to ignore"].tap()
+        app.textFields["Text to ignore"].typeText("xl")
         
-        
-        app.buttons["Go"].tap()
-        app.buttons["showResultButton"].tap()
-                
-        
-        XCTAssertEqual(app.buttons["showResultButton"].label, "Clear")
+        XCTAssertEqual(
+            app.staticTexts.element(matching: .any, identifier: "outputLabel").label,
+            "dexdnimoF oocl 7/42")
     }
 }
