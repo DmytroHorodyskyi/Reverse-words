@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     private var reverseMode: ReverseMode = .defaultMode
     
-    let reverseManager = ReverseManager()
+    private let reverseManager = ReverseManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
