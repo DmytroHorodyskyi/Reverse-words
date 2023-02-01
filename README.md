@@ -1,16 +1,30 @@
 # Reverse Words
 
-Simple IOS application for reversing words.
+Simple IOS application for reversing words. \
+It can reverse the words according to the rule of excluding certain characters.
 ___
 ## Usage
-##### Default mode :
+### Default mode :
 Reverse all characters of words excluding digits 
-![](Screensots/default.png)
-##### Custome mode :
+
+<img src="https://github.com/DmytroHorodyskyi/reverse-words/blob/main/Screenshots/DefaultMode.PNG" width="300" >
+
+##
+
+### Custome mode :
 Reverse all characters of words excluding characters of "Text to ignore"
 * Reverse all characters of words without excluding  
-![](CustomModeWithoutRules.png)
+
+<img src="https://github.com/DmytroHorodyskyi/reverse-words/blob/main/Screenshots/CustomModeWithoutRules.PNG" width="300" >
+
+##
+
 * Reverse all characters of words excluding some word 
-![](Screensots/CustomeModeWithRule.png)
-###### You can copy the result at any time by tap
-![](Copy.png)
+
+<img src="https://github.com/DmytroHorodyskyi/reverse-words/blob/main/Screenshots/CustomeModeWithRule.PNG" width="300" > 
+
+##
+
+#### You can copy the result at any time by tap
+
+<img src="https://github.com/DmytroHorodyskyi/reverse-words/blob/main/Screenshots/Copy.PNG" width="300" >
