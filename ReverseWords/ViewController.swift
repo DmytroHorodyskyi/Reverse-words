@@ -14,11 +14,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBOutlet weak var textFieldForReversing: UITextField!
-        
+    
     @IBOutlet weak var textFieldForCustomMode: UITextField!
     
     @IBOutlet weak var modeSegmentedControl: UISegmentedControl!
-        
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     private var reverseMode: ReverseMode = .defaultMode
@@ -27,9 +27,29 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        modeSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+        
+        outputLabel.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelDidGetTapped))
+        outputLabel.addGestureRecognizer(tapGesture)
+        
         setTextFieldForCustomMode(reverseMode: .defaultMode)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(disableTextFieldForReversing))
         view.addGestureRecognizer(tap)
+    }
+    
+    @objc func labelDidGetTapped(sender: UITapGestureRecognizer) {
+        guard let label = sender.view as? UILabel else {
+            return
+        }
+        UIPasteboard.general.string = label.text
+        outputLabel.textColor = UIColor.white
+        outputLabel.backgroundColor = UIColor.gray
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+            outputLabel.textColor = UIColor.black
+            outputLabel.backgroundColor = UIColor.white
+        }
     }
     
     @objc func disableTextFieldForReversing() {
@@ -75,6 +95,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @IBAction func textFieldForCustomModeAction(_ sender: UITextField) {
         textFieldForReversingAction(textFieldForReversing)
     }
+    
+    
 }
 
 extension ViewController {
