@@ -2,7 +2,20 @@
 
 Simple IOS application for reversing words. \
 It can reverse the words according to the rule of excluding certain characters.
-___
+
+## Required functionality
+- Program should reverse each word of the input string using rules to ignore characters in rotation and show the result on the screen.
+- Allow users to input their own character set to ignore.
+- Calculate and display result in real time. Use different branch & pull request for this feature.
+
+## Stack
+- Swift
+- Storyboards
+- Auto Layout
+- MVC
+- Figma
+- XCTests
+
 ## Usage
 ### Default mode :
 Reverse all characters of words excluding digits 
